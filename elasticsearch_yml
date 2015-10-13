@@ -1,0 +1,28 @@
+
+cluster.name: openalm (처음 등록시 클러스트명은 반드시 바꿔주는것이 좋다.)
+
+node.name: "scout_first: (하나 이상의 노드로 구성된다.)
+
+index.number_of_shards: 5 (샤드 개수)
+index.number_of_replicas: 1 (복사본 개수)
+
+->default로 샤드 5개, 복사본 1개로 구성된다.
+
+bootstrap.mlockall: true (엘라스틱서치에서 메모리가 부족하지 않도록 방지할수 있다.)
+
+network.bind_host: 192.168.0.1
+network.publish_host: 192.168.0.1
+network.host: 192.168.0.1
+(같은 서버에서는 별도의 네트워크 설정 없이 엘라스틱서치 노드를 여러개 실행하면 바로 바인딩 되지만,
+서로 다른 네트워크에 있는 엘라스틱서치 노드를 연결하려면 각 노드에 네트워크 설정이 필요.)
+
+transport.tcp.port: 9300
+http.port: 9200
+transport.tcp.compress: true (데이터를 압축해서전송. max_content_length 옵션에서 설정된 용량을 초과하면 데이터 전송하지 않음)
+
+http.enabled: false (REST API 통신을 하지 않음)
+
+gateway.type: local (기본 저장경로는 로컬이 유일)
+gateway (엘라스틱서치의 전체 클러스터의 상태를 저장하는 저장소)
+리커버리 : elasticsearch의 전체 클러스터가 종료된 후 재실행 될때 게이트웨이에 저장된 상태값을 읽어 들여 노드와 인덱스 등에 대해
+새로 설정하는과정

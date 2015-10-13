@@ -1,0 +1,23 @@
+ElasticSearch 색인
+
+Shard : 보통 1~10GB정도로 구성.
+	  : 샤드의 크기는 노드의 크기보다 최소한 같거나 크도록 설정.
+
+Index Analyzer 설정
+	: 색인시 문서에 대한 token 추출과 term분석에 사용한 analyzer설정
+	: 보통 루씬 내장 analyzer인 CJK analyzer사용.
+
+
+Elasticsearch검색하기
+	:검색에서 가장 대표적으로 사용하는 쿼리는 term과 range쿼리다.
+
+	검색결과 속성
+
+	Term Query
+		: 검색 대상 필드에 질의를 위해 입력한 질의 텍스트를 분석하여 추출된 검색 term이 포함된 문서를 검색.
+		: term은 형태소 분석을 통해 추출된 색인어. 검색시 입력한 질의어와는 다르다.
+		: lowercase filter를 적용했으면 대문자로 입력시 검색되지 않음.
+		: 사용자가 직접 입력한 질의어를 이용하고 싶다면 match 쿼리 이용.
+		
+
+
